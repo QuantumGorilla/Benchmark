@@ -15,25 +15,22 @@
 
 using namespace std;
 
-void main(){
- //CPU: Encontrar los primeros 50000 números primos con 10 hilos.
-    primes();
-
- //CPU: Encontrar los primeros 250000 dígitos de pi
-    PI();
-
- //CPU: Encontrar la salida del siguiente laberinto con X hilos
-
-
- //Disco: Duración de escritura (archivo generado) y lectura y de archivos de 1, 10, 100, 500 y 1000 megas.
-
-
- //Disco: Medición de cuantos archivos de 4 Kb puede copiar de una carpeta a otra en X segundos
-    Archive4KB();
-
- system("pause");
-}
 //*********************************************************************************+
+void prime(int from, int to){
+int i = 0, num;
+	for(num = from; num <= to; num++){
+		for(i = 2; i <= (num/2); i++){
+			if(num % i == 0){
+				i = num;
+				break;
+			}
+		}
+		if(i != num){
+		 cout << num << " ";
+		}
+	}
+}
+
 void primes(){
     int n;
 	cout << "Digite el valor de n: ";
@@ -62,20 +59,6 @@ void primes(){
 	tenth.join();
 }
 
-void prime(int from, int to){
-int i = 0, num;
-	for(num = from; num <= to; num++){
-		for(i = 2; i <= (num/2); i++){
-			if(num % i == 0){
-				i = num;
-				break;
-			}
-		}
-		if(i != num){
-		 cout << num << " ";
-		}
-	}
-}
 //*********************************************************************************+
 template <class T>
 std::ostream& operator<<(std::ostream& os, const std::vector<T> v)
@@ -135,6 +118,104 @@ void PI(){
 	return 0;
 }
 //*********************************************************************************+
+//Aquí va el que resuelve el laberinto
+//*********************************************************************************+
+void archive5MB(){
+   const int FILE_SIZE = 5000; //size in KB
+   const int BUFFER_SIZE = 1024;
+   char buffer [BUFFER_SIZE + 1];
+   int i;
+   for(i = 0; i < BUFFER_SIZE; i++)
+      buffer[i] = (char)(i%8 + 'a');
+   buffer[BUFFER_SIZE] = '\0';
+
+   FILE *pFile = fopen ("5MB.txt", "w");
+   for (i = 0; i < FILE_SIZE; i++)
+     fprintf(pFile, buffer);
+
+   fclose(pFile);
+
+}
+
+void archive10MB(){
+   const int FILE_SIZE = 10000; //size in KB
+   const int BUFFER_SIZE = 1024;
+   char buffer [BUFFER_SIZE + 1];
+   int i;
+   for(i = 0; i < BUFFER_SIZE; i++)
+      buffer[i] = (char)(i%8 + 'a');
+   buffer[BUFFER_SIZE] = '\0';
+
+   FILE *pFile = fopen ("10MB.txt", "w");
+   for (i = 0; i < FILE_SIZE; i++)
+     fprintf(pFile, buffer);
+
+   fclose(pFile);
+}
+
+void archive100MB(){
+   const int FILE_SIZE = 100000; //size in KB
+   const int BUFFER_SIZE = 1024;
+   char buffer [BUFFER_SIZE + 1];
+   int i;
+   for(i = 0; i < BUFFER_SIZE; i++)
+      buffer[i] = (char)(i%8 + 'a');
+   buffer[BUFFER_SIZE] = '\0';
+
+   FILE *pFile = fopen ("100MB.txt", "w");
+   for (i = 0; i < FILE_SIZE; i++)
+     fprintf(pFile, buffer);
+
+   fclose(pFile);
+}
+
+void archive500MB(){
+   const int FILE_SIZE = 500000; //size in KB
+   const int BUFFER_SIZE = 1024;
+   char buffer [BUFFER_SIZE + 1];
+   int i;
+   for(i = 0; i < BUFFER_SIZE; i++)
+      buffer[i] = (char)(i%8 + 'a');
+   buffer[BUFFER_SIZE] = '\0';
+
+   FILE *pFile = fopen ("500MB.txt", "w");
+   for (i = 0; i < FILE_SIZE; i++)
+     fprintf(pFile, buffer);
+
+   fclose(pFile);
+}
+
+void archive1000MB(){
+   const int FILE_SIZE = 1000000; //size in KB
+   const int BUFFER_SIZE = 1024;
+   char buffer [BUFFER_SIZE + 1];
+   int i;
+   for(i = 0; i < BUFFER_SIZE; i++)
+      buffer[i] = (char)(i%8 + 'a');
+   buffer[BUFFER_SIZE] = '\0';
+
+   FILE *pFile = fopen ("1000MB.txt", "w");
+   for (i = 0; i < FILE_SIZE; i++)
+     fprintf(pFile, buffer);
+
+   fclose(pFile);
+}
+
+void archivesMB(){
+	printf("Generando archivo de 5MB...\n");
+   archive5MB();
+   printf("Generando archivo de 10MB...\n");
+   archive10MB();
+   printf("Generando archivo de 100MB...\n");
+   archive100MB();
+   printf("Generando archivo de 500MB...\n");
+   archive500MB();
+   printf("Generando archivo de 1000MB...\n");
+   archive1000MB();
+   printf("Archivos generados exitosamente.\n");
+}
+
+//*********************************************************************************+
 static int n_archivos = 0;
 void copy_file(string ruta, string destino)
 {
@@ -179,7 +260,7 @@ int getime()
 	int segs = time->tm_hour * 3600 + time->tm_min * 60 + time->tm_sec;
 	return segs;
 }
-void Archive4KB()
+void archive4KB()
 {
 	cout << "Digite el tiempo en segundos: ";
 	int s;
@@ -197,4 +278,24 @@ void Archive4KB()
 	cin.ignore();
 	cin.get();
 	return 0;
+}
+//*********************************************************************************+
+
+void main(){
+ //CPU: Encontrar los primeros 50000 números primos con 10 hilos.
+    primes();
+
+ //CPU: Encontrar los primeros 250000 dígitos de pi
+    PI();
+
+ //CPU: Encontrar la salida del siguiente laberinto con X hilos
+
+
+ //Disco: Duración de escritura (archivo generado) y lectura y de archivos de 1, 10, 100, 500 y 1000 megas.
+	archivesMB();
+
+ //Disco: Medición de cuantos archivos de 4 Kb puede copiar de una carpeta a otra en X segundos
+    Archive4KB();
+
+ system("pause");
 }
