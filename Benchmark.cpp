@@ -295,7 +295,7 @@ void main(){
 	archivesMB();
 
  //Disco: Medición de cuantos archivos de 4 Kb puede copiar de una carpeta a otra en X segundos
-    Archive4KB();
+    archive4KB();
 
  system("pause");
 }
