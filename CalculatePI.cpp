@@ -1,18 +1,23 @@
 #include <stdio.h>
+#include <iostream>
 
-const int n=250000;
-const int dim=((10*n)/3);
-int i,j,k, resto, digant, nueves, aux;
-int pi[dim+1];
+const int n = 250000;
+const int m = ((10 * n) / 3);
 
-int main (void)
-{
-    for (i=1;i<=dim;i++) pi[i]=2;
+int main (void){
+
+    int n;    
+    std::cout << "Digite la cantidad de digitos de PI que quiere mostrar: ";
+    std::cin >> n;    
+    int resto, digant, nueves, aux;
+    int pi [m + 1];
+
+    for (int i=1;i<= m;i++) pi[i]=2;
     nueves=0; digant=0;
-    for (i=1;i<=n;i++)
+    for (int i=1;i<=n;i++)
     {
         resto=0;
-        for (j=dim;j>=1;j--)
+        for (int j= m;j>=1;j--)
         {
             aux=10*pi[j]+resto*j;
             pi[j]=aux % (2*j-1);
@@ -24,7 +29,7 @@ int main (void)
         else if (resto==10)
         {
              printf("%i",digant);
-             for (k=1;k<=nueves;k++) printf("0");
+             for (int k=1;k<=nueves;k++) printf("0");
              digant=0;
              nueves=0;
         }
@@ -34,11 +39,11 @@ int main (void)
             digant=resto;
             if (nueves!=0)
             {
-                for(k=1;k<=nueves;k++) printf("9");
+                for(int k=1;k<=nueves;k++) printf("9");
                 nueves=0;
             }
         }
     }
-    printf("%i",digant);
-    scanf("%i");
+    scanf_s("%i",digant);
+    system("pause");
 }

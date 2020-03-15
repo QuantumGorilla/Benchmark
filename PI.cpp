@@ -28,7 +28,7 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T> v)
 int main(int argc, char* argv[])
 {
 	int n; // number of digits to calculate AFTER the decimal dot
-	cout << "Digite el número de decimales que quiere mostrar: ";
+	cout << "Digite el numero de decimales que quiere mostrar: ";
 	cin >> n;
 	n++;
 
@@ -61,5 +61,6 @@ int main(int argc, char* argv[])
 
 	std::cout << digits << std::endl;
 
+	system("pause");
 	return 0;
 }

@@ -44,6 +44,6 @@ int main(){
 		eighth.join();
 		nineth.join();
 		tenth.join();
-    		
+		system("pause");
 		return 0;
 }
