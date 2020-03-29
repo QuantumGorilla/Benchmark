@@ -1,4 +1,3 @@
-//Opencv C++ Program to solve mazes using mathematical morphology
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <cmath>
